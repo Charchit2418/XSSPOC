@@ -17,7 +17,7 @@ xhr.onload = function() {
     var secondXhr = new XMLHttpRequest();
 
     // Set up the second request
-    secondXhr.open('GET', 'https://member.daraz.com.np/address/api/listAddress', true);
+    secondXhr.open('GET', 'https://my.daraz.com.np/api/recentOrders/', true);
     secondXhr.withCredentials = true; // Send cookies with the request
 
     // Define what happens on successful data retrieval
