@@ -2,7 +2,7 @@
 var xhr = new XMLHttpRequest();
 
 // Set up the request
-xhr.open('GET', 'https://member.daraz.com.np/user/api/getUser', true);
+xhr.open('GET', 'https://member.lazada.sg/user/api/getUser', true);
 xhr.withCredentials = true; // Send cookies with the request
 
 var acc_details;
