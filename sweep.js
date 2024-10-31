@@ -1,1 +1,1 @@
-console.log(1337)
+console.log(1337);
